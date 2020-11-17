@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <!--grabbed from https://reactjs.org/docs/cdn-links.html-->
+
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type='text/babel'>
+
+    class Counter extends React.Component {
+      state = {
+        count: 0
+      }
+
+      //   buttonClick = () => {
+      //     setState((prevState) => {
+      //       return{
+      //       count: prevState.count + 1
+      //       }
+      //     })
+      //   }
+
+      buttonClick = () => {
+        this.setState((state) => {
+          return {
+            count: state.count + 1
+          }
+        })
+        this.congrats.play()
+      }
+      congrats = new Audio('https://themushroomkingdom.net/sounds/wav/mk64/mk64_announcer11-jp.wav')
+      render() {
+        return (
+          <div> Counter: {this.state.count}
+            <button onClick={this.buttonClick}>Press Me</button>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Counter />, document.getElementById('root'))
+
+  </script>
+
+
+</body>
+
+</html>
